@@ -1,0 +1,89 @@
+> import os 사용
+
+
+# import sys, os
+# sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
+# import day02.elif05 # import : 해당 파일을 현재 페이지로 불러옴
+# print( "현재 페이지" )
+
+import os
+
+#data = 0    
+data = None # 데이터 초기화
+while True:         # while: 무한 반복. 정지는 ctrl + c
+    print( "=" * 30 )
+    print( "1. 데이터 입력" )
+    print( "2. 데이터 출력" )
+    print( "3. 종료" )
+    print( "=" * 30 )
+    num = int(input(">>> "))
+    
+    if num == 1:
+        data = input( "데이터 입력: " )
+    elif num == 2:
+        if data == None:
+            print( "저장 데이터 없음" )
+        else:
+            print( f"입력 데이터: {data}" )
+        os.system("pause")  # 화면 일시정지
+    elif num == 3:
+        os._exit(1)     # 강제 종료. 괄호 안의 숫자는 상관없음. 다만 의미적으로 0은 성공 1은 실패 -1은 악성으로 분류됨. 비정상적으로 강제 종료이기 때문에 1 입력함
+    
+    os.system("cls")    # 화면 clear
+
+
+
+
+
+
+
+
+> for
+
+rint( "안녕", end="" ) # end="" 끝값을 엔터 대신에 "" 로 변경
+# print()	# 엔터
+print( "하세" )
+print( "요" )
+
+
+for i in range(1, N+1)	# 범위 필요
+for i in "Python" 		# 범위 불필요. 해당 값이 차례차례 들어감
+
+
+
+
+
+
+> while
+
+'''
+F5 : 디버깅 실행 모드
+F9 : 브레이크 포인트
+F11 : 한 줄씩 실행
+F10 : 한 줄씩 실행
+shift + F5 : 디버깅 종료
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
