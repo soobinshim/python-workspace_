@@ -39,7 +39,7 @@ shift + F5 : 디버깅 종료
 break : 반복문을 빠져나올 경우 사용
 continue : 반복문 위로 올려보낸다
 '''
-'''
+
 i = 0
 while i <= 5:
     i += 1
@@ -176,7 +176,7 @@ for i in range(2, N+1):
             cnt += 1
     if cnt == 2:
         print( i )
-'''
+
 
 
 N = int(input("수 입력: "))

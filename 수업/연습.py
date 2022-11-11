@@ -341,3 +341,105 @@ for i in range(1, N+1):
 
 
 
+# N = int(input("입력: "))
+# cnt_3 = cnt_5 = sum_3 = sum_5 = 0
+# for i in range(1, N+1):
+#     if i % 15 != 0:
+#         if i % 3 == 0:
+#             cnt_3 += 1
+#             sum_3 += i
+#         if i % 5 == 0:
+#             cnt_5 += 1
+#             sum_5 += i
+# print( f"3의 배수의 개수: {cnt_3}, 합: {sum_3}" )
+# print( f"5의 배수의 개수: {cnt_5}, 합: {sum_5}" )
+
+
+# N = int(input("입력: "))
+# i = cnt_3 = cnt_5 = sum_3 = sum_5 = 0
+# while i <= N: 
+#     i += 1  
+#     if i % 15 != 0:
+#         if i % 3 == 0:
+#             cnt_3 += 1
+#             sum_3 += i
+#         if i % 5 == 0:
+#             cnt_5 += 1
+#             sum_5 += i
+# print( f"3의 배수의 개수: {cnt_3}, 합: {sum_3}" )
+# print( f"5의 배수의 개수: {cnt_5}, 합: {sum_5}" )
+
+
+
+
+# N = int(input("입력: "))
+# cnt = 0
+# for i in range(1, N+1):
+#     for k in range(i):
+#         print(i, end="")
+#         cnt += 1
+# print( f"\n총 길이: {cnt}" )
+
+
+# N = int(input("입력: "))
+# for i in range(1, 10):
+#     for k in range(2, N+1):
+#         print( f"{k} x {i} = {i * k}", end="\t" )
+#     print()
+
+
+# R_ = 1
+# for i in range(1, 11, 1):
+#     R_ = i * R_
+# print( R_ )
+
+
+
+# f = 10
+# sum_ = 0
+# for i in range(1, 30):
+#     sum_ += (f * 2)
+# print( f + sum_ )
+
+# print( 20*29 + 10 )
+
+
+
+# N1 = int(input("양꼬치 몇 인분? "))
+# N2 = int(input("음료수 몇 개? "))
+# kko = 12000 * N1
+# drink = 2000 * N2
+
+# for i in range(1, N1+1):
+#     cnt = 0
+#     if i % 10 == 0:
+#         cnt += 1
+#         drink = drink - (cnt * 2000)
+
+# print( f"양꼬치 {N1} 인분({kko}원) 음료수 {N2}개({drink}원)는 총 {kko + drink} 원" )
+
+
+# for i in range(0, 5):
+#     print( f"상위포문 {i}일 때 하위 포문: ", end="" )
+#     for j in range(0, 5):
+#         print( i * j, end=" " )
+#     print()
+
+
+# for i in range(0, 5):
+#     for k in range(1, 6):
+#         print( (i * 5) + k, end="\t" )
+#     print()
+
+
+# num = int(input("정수값: "))
+# 결과 = ""
+# while True:
+#     나머지 = num % 2
+#     num = num // 2
+#     결과 = str(나머지) + 결과
+#     if num == 0:
+#         print(결과)
+#         break
+
+
