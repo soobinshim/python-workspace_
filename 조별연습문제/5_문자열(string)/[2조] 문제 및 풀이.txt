@@ -1,0 +1,216 @@
+# Q1
+# 지도 어플리케이션에서 소요시간을 크롤링 하였더니 문자열 데이터 였다.소요시간을
+# 비교하기 위해 시간을 모두 분으로 바꾸려고 한다. 다음과 같이 시간이 입력되면 분으로
+# 바꾸어 주는 프로그램을 작성해보자.
+
+# 표준입력		표준입력		표준입력
+# 1시간30분		2시간			30분
+
+# 표준출력		표준출력		표준출력
+# 90			120			30        
+
+
+# Q2
+# random으로 주사위게임 만들기
+# 첫 번째 플레이어, 당신의 이름은? a
+# 두 번째 플레이어, 당신의 이름은? b
+# a의 주사위는 4입니다
+# b의 주사위는 1입니다
+# a가 3 차이로 이겼습니다
+
+
+# Q3
+# 단어들이 들어있는 리스트에서 랜덤한 단어를 컴퓨터가 하나 추출하고, 그 단어를 사용자가 단어를 맞추는 행맨게임이다.
+# 게임 시작, 최고 기록 확인, 종료 구현
+# ex) 추출된 단어: apple 처음 출력 _ _ _ _ _, 사용자가 정답(a) 입력 시 a _ _ _ _
+# 사용자가 오답 입력 시 a _ _ _ _ 그대로 유지
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Q1 풀이
+time = input("시간을 입력하세요>>>")
+# 1. 분만 있는 경우 ex) 30분
+# 2. 시간만 있는 경우 ex) 2시간
+# 3. 시간과 분이 있는 경우 ex) 1시간 30분
+
+if time.find('시간') == -1:
+    #분만 있는 경우
+    result = int(time.split('분')[0])
+else:
+    if time.find('분') == -1:
+        #시간만 있는경우
+        result = int(time.split('시간')[0])*60
+    else:
+        #시간과 분이 있는 경우
+        sub = time.split('시간')
+        result = int(sub[0])*60 + int(sub[1].split('분')[0])
+print(result)
+
+
+# Q2 풀이
+import random
+
+a = input('첫 번째 플레이어, 당신의 이름은? ')
+b = input('두 번째 플레이어, 당신의 이름은? ')
+
+dice_1 = random.randint(1, 6)
+dice_2 = random.randint(1, 6)
+
+print(f'{a}의 주사위는 {dice_1}입니다')
+print(f'{b}의 주사위는 {dice_2}입니다')
+
+if dice_1 > dice_2:
+    print(f'{a}가 {dice_1 - dice_2} 차이로 이겼습니다')
+elif dice_2 > dice_1:
+    print(f'{b}가 {dice_2 - dice_1} 차이로 이겼습니다')
+else:
+    print('비겼네요!')
+
+
+# Q3 풀이
+import random
+import time
+import os
+
+while True:
+    li = ["apple", "banana", "kiwi", "grape"]
+    x = random.randint(0, len(li) - 1)
+    word = li[x]
+    chance = 10
+    answer = ""
+    high = 0
+    print("행맨 게임!!!")
+    print("1. 게임 시작 2. 최고 기록 확인 3. 종료")
+    game = input("실행할 번호는? ")
+    if game == "1":
+        t = time.time()
+        while chance > 0:
+            fail = 0
+            for char in word:
+                if char in answer:
+                    print(char, end=" ")
+                else:
+                    print("_", end=" ")
+                    fail += 1
+            print("\n")
+            if fail == 0:
+                score = time.time() - t
+                if high < score:
+                    print(f"{round(score)}초 만에 정답!! 최고 기록 달성!!\n")
+                    high = score
+                    time.sleep(1)
+                    os.system("cls")
+                    break
+                else:
+                    print(f"{round(score)}초 만에 정답!!\n")
+                    time.sleep(1)
+                    os.system("cls")
+                    break
+            put = input("문자를 입력하세요: (중도 포기 원할 경우 quit 입력) ")
+            answer += put
+            time.sleep(0.7)
+            os.system("cls")
+            if put == "quit":
+                print("포기하지마..")
+                time.sleep(2)
+                os.system("cls")
+                break
+            else:
+                if put not in word:
+                    chance -= 1
+                    print("땡!")
+                    print(f"남은 기회 {chance}번!")
+                    time.sleep(1)
+                    os.system("cls")
+                    if chance == 0:
+                        print("기회를 다 써버렸습니다 :(")
+                        time.sleep(1)
+                        os.system("cls")
+    elif game == "2":
+        if high == 0:
+            print("기록이 없습니다.")
+            time.sleep(1)
+            os.system("cls")
+        else:
+            print(f"최고 기록은 {round(high)}초입니다!")
+            time.sleep(1)
+            os.system("cls")
+    elif game == "3":
+        print("종료")
+        break
+    else:
+        print("잘못된 실행입니다.")
+        time.sleep(1)
+        os.system("cls")

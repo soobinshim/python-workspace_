@@ -1,0 +1,76 @@
+문제1)
+kg피자가게는 피자를 두 조각에서 열 조각까지 원하는 조각 수로 잘라줍니다.
+피자 조각 수 slice01와 피자를 먹는 사람의 수 n이라고 변수를 이름짓고 , 입력받으세요
+n명의 사람이 최소 한 조각 이상 피자를 먹으려면
+최소 몇 판의 피자를 시켜야 하는지를answer 변수에 담아 출력하시오
+범위) 2 ≤ slice01 ≤ 10 
+1 ≤ n ≤ 100 의 범위내에서만 만족해도된다.
+ex)
+slice01 =4
+n=12 을 입력했을때
+출력결과 =>'12명의 사람이 4조각씩 잘라줄때, 최소 한조각 이상 피자를 먹으려면 최소 3판의 피자를 시켜야합니다.'
+위와같이 출력되면 정답.
+
+풀이1)
+answer =0
+slice01 = int(input('피자당 잘라주는 조각수 :'))
+n = int(input('피자를 먹는 사람수:'))
+if n % slice01 ==0 :
+    answer = n//slice01
+else :  # n % slice01 !=0
+    answer = n//slice01 + 1 # (몫+1) 판을 주문하면됨.
+print(f'{n}명의 사람이 {slice01}조각씩 잘라줄때, 최소 한조각 이상 피자를 먹으려면 최소 {answer}판의 피자를 시켜야합니다.')
+
+
+문제2)두 수와 연산자를 입력받고,사칙연산 결과를 출력하는 프로그램 (덧셈, 뺄셈, 곱셈, 나눗셈만 실행)
+풀이2)
+> 풀이
+n1 = int(input("수 입력: "))
+n2 = int(input("수 입력: "))
+Operator = input("연산 기호: ")
+
+if Operator == '+':
+    print( f"{n1} + {n2} = {n1 + n2}" )
+elif Operator == '-':
+    print( f"{n1} - {n2} = {n1 - n2}" )
+elif Operator == '*':
+    print( f"{n1} * {n2} = {n1 * n2}" )
+elif Operator == '/':
+    print( f"{n1} / {n2} = {n1 / n2}" )
+else:
+    print( "사칙연산만 가능합니다" ) 
+
+문제3)''' 영화관에서 영화표를 할인하고 있습니다. 
+    예매권 정가 13,000원
+    0~6세 구매불가
+    7~9세 : 5,000원
+    10대 : 20% 할인
+    20대 : 10% 할인
+    60대 이상 : 40% 할인
+    일 때 고객의 나이와 갯수를 입력받고 티켓 한 장당 할인금액과 
+    총 지불해야 할 금액을 구하세요.
+'''
+풀이3)
+movie = 13000
+age = int(input("고객님의 나이를 입력해주세요 : "))
+ticket = int(input("예매하실 영화표의 갯수를 입력해주세요 : "))
+if 0 <= age <= 6:
+    print("구매하실 수 없습니다")
+elif 7 <= age <= 9:
+    sale = 8000
+    movie = (movie - sale) * ticket
+    print(f'티켓당 할인금액 : {int(sale):,}원')
+    print(f'총 금액 : {int(movie):,}원')
+elif 10 <= age <= 19:
+    sale = movie * 0.2
+    movie = (movie - sale) * ticket
+    print(f'티켓당 할인금액 : {int(sale):,}원')
+    print(f'총 금액 : {int(movie):,}원')
+elif 20 <= age <= 29:
+    sale = movie * 0.1
+    movie = (movie - sale) * ticket
+    print(f'티켓당 할인금액 : {int(sale):,}원')
+    print(f'총 금액 : {int(movie):,}원')
+else:
+    movie *= ticket
+    print('할인 이벤트 대상이 아닙니다')

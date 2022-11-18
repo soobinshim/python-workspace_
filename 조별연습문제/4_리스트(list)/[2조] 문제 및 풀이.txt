@@ -1,0 +1,235 @@
+# Q1
+# scoreList = [70,60,55,75,95,90,80,80,85,100] 리스트의 평균을 for문을 활용해 출력하시오.
+
+
+# Q2
+# 연락처 관리 프로그램
+# ====================
+# 1. 친구 리스트 출력
+# 2. 친구 추가
+# 3. 친구 삭제
+# 4. 이름변경
+# 9. 종료
+# ====================
+# 메뉴를 선택하시오:
+
+
+# Q3
+# 약수 중 소수의 개수가 4 개 이상인 수들을 '사소수' 라고 한다. 입력받은 수는 '사소수'인가?
+# 사소수의 예로는 390 420 798 858 870 등이 있다. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Q1 풀이
+score_li = [70,60,55,75,95,90,80,80,85,100]
+
+sum = 0
+length = len(score_li)
+
+for i in range (0, length):
+    sum = sum + score_li[i]
+
+if length != 0:
+    avg = sum / length
+    print("평균은 ",avg)
+else:
+    print("리스트가 비어 있습니다.")
+
+
+# Q2 풀이
+menu = 0
+friends = []
+while menu !=9:
+    print("="*20)
+    print("1. 친구 리스트 출력")
+    print("2. 친구 추가")
+    print("3. 친구 삭제")
+    print("4. 이름변경")
+    print("9. 종료")
+    print("="*20)
+    menu = int(input("메뉴를 선택하시오: "))
+    if menu == 1:
+        print(friends)
+    elif menu == 2:
+        name = input("이름을 입력하시오: ")
+        friends.append(name)
+    elif menu == 3:
+        del_name = input("삭제하고 싶은 이름을 입력하시오: ")
+
+        if del_name  in friends:
+            friends.remove(del_name)
+        else:
+            print("이름이 발견되지 않았습니다")
+    elif menu == 4:
+        old_name = input("변경하고 싶은 이름을 입력하세여: ")
+        if old_name in friends:
+            index = friends.index(old_name)
+            new_name = input("새로운 이름을 입력하세여: ")
+            friends[index] = new_name
+        else:
+            print("이름이 발견되지 않았습니다")
+    elif menu == 9:
+        break
+
+
+# Q3 풀이
+li3 = []
+while True:
+    num = input("입력받을 수는? ")
+    if num.isnumeric():
+        num = int(num)
+        break
+    else:
+        print("올바른 수를 입력하세요")
+
+li = []
+for i in range(1, num + 1):
+    if num % i == 0:
+        li.append(i)
+# print(li) # 약수
+
+cnt = 0
+for j in li:
+    li2 = []
+    for k in range(1, j + 1):
+        if j % k == 0:
+            li2.append(k)
+    # print(li2) # 약수의 약수들
+    if len(li2) == 2: # 약수의 약수 개수가 2개일 경우(소수일 경우) cnt1 1증가
+        cnt += 1
+
+if cnt >= 4: # 약수 중 소수 개수가 4개 이상인 경우 추가
+    li3.append(i)
+
+if len(li3) == 1:
+    print(f"{num}은 사소수입니다~~!")
+else:
+    print(f"{num}은 사소수가 아닙니다.")

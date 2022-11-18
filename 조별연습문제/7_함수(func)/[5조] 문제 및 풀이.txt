@@ -1,0 +1,181 @@
+#[문제1. ]
+# 두 수를 입력 받아 최대공약수와 최소공배수를 구하는 프로그램을 만드시오
+
+#[문제2. ]
+#다음 코드들을 함수를 적용하여 나타내어보자
+#def menu,inputword,outputword,searchword,deleteword
+
+wordlist = []
+i = 0
+while True :
+    print("1. 입력하기")
+    print("2. 출력하기")
+    print("3. 검색하기")
+    print("4. 삭제하기")
+    print("5. 종   료")
+    num = int(input(" 메뉴를 선택하세요 : "))
+    print("")
+
+    if num == 1:
+        while True:
+            word = input ("단어를 입력하세요 :")
+            if word == "end":
+                break
+            else :
+                if i >= 20 :
+                    print("20개를 초과하여 종료합니다.\n")
+                    break
+                wordlist.append(word)
+                i +=1
+            print("")
+    elif num == 2:
+        for j in range(0, len(wordlist)):
+            print("단어 %d : %s" % (j+1, wordlist[j]))
+        print("")
+    elif num == 3:
+        while True:
+            findword = input("찾을 단어를 입력하세요 :")
+            if findword == "end":
+                break
+            if findword not in wordlist:
+                print("%s 문자열은 존재하지 않습니다.\n" % findword)
+            else:
+                find_index = wordlist.index(findword)
+                print("%s 문자열은 %d번째 문자열입니다.\n" % (findword, find_index))
+    elif num == 4:
+        while True:
+            del_word = input("삭제할 단어를 입력하세요 :")
+            if del_word == "end":
+                break
+            if del_word not in wordlist:
+                print("%s 문자열은 존재하지 않습니다.\n" % (del_word))
+            else:
+                del_index = wordlist.index(del_word)
+                del_true = input("정말로 삭제하시겠습니까?(Y/N)")
+            
+                if del_true == "Y":
+                    del(wordlist[del_index])
+                    print("삭제되었습니다.")
+                elif del_true == "N":
+                    print("삭제가 취소 되었습니다.")
+    elif num == 5:
+        print("프로그램을 종료합니다.")
+        break
+    else:
+        print("메뉴를 다시 선택해주세요.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================
+# [문제1 정답 ]
+# 두 수 입력받기
+a, b = map(int, input().split())
+
+# 최대 공약수 구하기
+def gcd(a,b):
+    m = min(a,b)
+    for i in range(m,0,-1):
+        if a % i == 0 and b % i == 0:
+            print(i)
+            break
+
+# 최소 공배수 구하기
+def lcm(a,b):
+    M = max(a,b)
+    for j in range(M, (a*b)+1):
+        if j % a == 0 and j % b == 0:
+            print(j)
+            break
+
+gcd(a,b)
+lcm(a,b)
+
+
+# [문제2 정답 ]  
+wordlist = []
+
+def menu():            #def menu
+    print("1. 입력하기")
+    print("2. 출력하기")
+    print("3. 검색하기")
+    print("4. 삭제하기")
+    print("5. 종   료")
+    num = int(input(" 메뉴를 선택하세요 : "))
+    print("")
+    return num
+
+def inputword():
+        while True:
+            word = input ("단어를 입력하세요 :")
+            if word == "end":
+                break
+            else :
+                if len(wordlist) >= 20 :
+                    print("20개를 초과하여 종료합니다.\n")
+                    break
+                wordlist.append(word)
+            print("")
+def outputword():
+        for j in range(0, len(wordlist)):
+            print("단어 %d : %s" % (j+1, wordlist[j]))
+        print("")
+def searchword():
+        while True:
+            findword = input("찾을 단어를 입력하세요 :")
+            if findword == "end":
+                break
+            if findword not in wordlist:
+                print("%s 문자열은 존재하지 않습니다.\n" % findword)
+            else:
+                find_index = wordlist.index(findword)
+                print("%s 문자열은 %d번째 문자열입니다.\n" % (findword, find_index))
+        print("")
+def deleteword():
+        while True:
+            del_word = input("삭제할 단어를 입력하세요 :")
+            if del_word == "end":
+                break
+            if del_word not in wordlist:
+                print("%s 문자열은 존재하지 않습니다.\n" % (del_word))
+            else:
+                del_index = wordlist.index(del_word)
+                del_true = input("정말로 삭제하시겠습니까?(Y/N)")
+            
+                if del_true == "Y":
+                    del(wordlist[del_index])
+                    print("삭제되었습니다.")
+                elif del_true == "N":
+                    print("삭제가 취소 되었습니다.")
+        print("")
+
+while True:
+    num = menu()
+    if num == 1:
+        inputword()
+    elif num == 2:
+        outputword()
+    elif num == 3:
+        searchword()
+    elif num == 4:
+        deleteword()                    
+    elif num == 5:
+        print("프로그램을 종료합니다.")
+        break
+    else:
+        print("메뉴를 다시 선택해주세요.")
+

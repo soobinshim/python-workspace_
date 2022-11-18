@@ -1,0 +1,133 @@
+#[문제1. ]
+# 성적표가 좌측과 같이 딕셔너리로 준비되어 있다. report = {'국어' : 0, '수학': 0, '영어': 0}
+# 각 과목의 점수를 입력 받아 평균(소수점 아래 2자리까지)을 출력 하라
+
+#[문제2. ]
+#일주일간 최고 기온의 평균을 구하는 프로그램을 출력하시오.
+
+
+#[문제3. ]
+#단어를 관리하는 프로그램을 만드십시요. 
+#1. 입력하기  2. 출력하기  3. 검색하기 4. 삭제하기  5. 종료
+#1번 입력시 단어를 입력하십시요  (wordlist) (end 입력시 목록으로 ,20개 초과 입력시 목록으로)
+#2번 입력시 1번에서 입력한 단어들 출력  (for문) (j in range) (wordlist[j])
+#3번 입력시 1번에서 입력한 단어들 검색 (findword)(find_index)(wordlist.index) (end 입력시 목록으로)
+#못찾을시 문자열은 존재하지 않습니다(not in)/ 문자열은 %d번쨰 문자열입니다.
+#4번 입력시 1번에서 입력하였던 단어 입력 (del_word) (del_index)(del_true) (wordlist.index)
+#-> 정말 삭제하시겠습니까 Y/N 선택지 
+#삭제할 단어가 없을시 문자열은 존재하지 않습니다(not in).
+#Y누를경우 삭제되었습니다. N 누를시 삭제를 취소하겠습니다.
+#5번 입력시 종료 또는 메뉴를 다시 선택해주십시요. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================
+# [문제1 정답 ]
+report = {'국어' : 0, '수학': 0, '영어': 0}
+
+for i in report.keys():
+    score = int(input(f"{i} 점수 입력 :"))
+    report[i] = score
+#print(report)
+
+sum = 0 
+
+for i in report.values():
+    sum += i
+
+print("평균은", round(sum/len(report), 2))
+
+
+# [문제2 정답 ]  
+temp = {'월': 0, '화': 0, '수': 0,'목':0,'금':0,'토':0,'일':0}
+
+for i in temp.keys():
+    day = float(input(f"{i} 기온 입력 :"))
+    temp[i] = day
+
+sum = 0 
+
+for k in temp.values():
+    sum += k
+
+avg = sum/len(temp)
+            
+print('일주일간 최고 기온의 평균 : %.1f˚' % avg)
+
+
+
+# [문제3 정답 ]
+wordlist = []
+i = 0
+while True :
+    print("1. 입력하기")
+    print("2. 출력하기")
+    print("3. 검색하기")
+    print("4. 삭제하기")
+    print("5. 종   료")
+    num = int(input(" 메뉴를 선택하세요 : "))
+    print("")
+
+    if num == 1:
+        while True:
+            word = input ("단어를 입력하세요 :")
+            if word == "end":
+                break
+            else :
+                if i >= 20 :
+                    print("20개를 초과하여 종료합니다.\n")
+                    break
+                wordlist.append(word)
+                i +=1
+            print("")
+    elif num == 2:
+        for j in range(0, len(wordlist)):
+            print("단어 %d : %s" % (j+1, wordlist[j]))
+        print("")
+    elif num == 3:
+        while True:
+            findword = input("찾을 단어를 입력하세요 :")
+            if findword == "end":
+                break
+            if findword not in wordlist:
+                print("%s 문자열은 존재하지 않습니다.\n" % findword)
+            else:
+                find_index = wordlist.index(findword)
+                print("%s 문자열은 %d번째 문자열입니다.\n" % (findword, find_index))
+    elif num == 4:
+        while True:
+            del_word = input("삭제할 단어를 입력하세요 :")
+            if del_word == "end":
+                break
+            if del_word not in wordlist:
+                print("%s 문자열은 존재하지 않습니다.\n" % (del_word))
+            else:
+                del_index = wordlist.index(del_word)
+                del_true = input("정말로 삭제하시겠습니까?(Y/N)")
+            
+                if del_true == "Y":
+                    del(wordlist[del_index])
+                    print("삭제되었습니다.")
+                elif del_true == "N":
+                    print("삭제가 취소 되었습니다.")
+    elif num == 5:
+        print("프로그램을 종료합니다.")
+        break
+    else:
+        print("메뉴를 다시 선택해주세요.")
+

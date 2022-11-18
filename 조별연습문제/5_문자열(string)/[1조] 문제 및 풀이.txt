@@ -1,0 +1,91 @@
+문제 )문자열 s가 매개변수로 주어집니다. s에서 한 번만 등장하는 문자를 사전 순으로 정렬한 문자열을 출력하세요. 한 번만 등장하는 문자가 없을 경우 빈 문자열을 return 합니다.
+s는 소문자로만 이루어져 있습니다.
+
+ex)
+"hello"에서 한 번씩 등장한 문자는 "heo"이고 이를 사전 순으로 정렬한 "eho"를 return 합니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+풀이)
+answer = ''
+li_s = list(s)
+li_s01=sorted(li_s)
+print(li_s01) #sort한 s를 리스트에 담기완료
+for i in range (len(li_s01)): # li_s01 =[a,a,a,b,b,c,c,c,d]
+    if li_s01.count(li_s01[i]) == 1 : 
+        answer += li_s01[i]
+print('정답은:',answer)
+
+
+
+문). 아래 문자열을 정수 타입으로 변환하세요
+st = '127,000,254'
+(st 출력 시 127000254가 출력되도록)
+
+풀)
+st = st.replace(",","")
+st = int(st)
+print( st, type(st) )
+
+
+문)
+'''
+메뉴 추천 프로그램을 만들어보세요(random 함수 사용)
+1.메뉴판
+2.메뉴 추가
+3.메뉴 삭제
+4.메뉴 추천
+5.종료
+>>> : 
+'''
+
+풀)
+import random
+import os
+
+menus = []
+prices = []
+
+while True:
+    print("1.메뉴판\n2.메뉴 추가\n3.메뉴 삭제\n4.메뉴 추천\n5.종료")
+    num = int(input(">>> : "))
+    if num == 1:
+        print("{0:^20}".format('메뉴판'))
+        print("="*27)
+        for i in range(len(menus)):
+            print(f'{i+1}.{menus[i]}{prices[i]:>20,}원')
+        os.system("pause")
+    elif num == 2:
+        menu = input('추가하실 메뉴를 입력해주세요 : ')
+        menus.append(menu)
+        price = int(input("가격을 입력해주세요 : "))
+        prices.append(price)
+    elif num == 3:
+        print("{0:^20}".format('메뉴판'))
+        print("="*27)
+        for i in range(len(menus)):
+            print(f'{i+1}.{menus[i]}{prices[i]:>20,}원')
+        delnum = int(input("삭제하실 메뉴의 번호 : "))
+        del(menus[delnum-1]); del(prices[delnum-1])
+    elif num == 4:
+        lunch = random.randrange(len(menus))
+        print(f"오늘의 추천 메뉴 : {menus[lunch]}")
+        print(f'메뉴의 가격 : {prices[lunch]}')
+        os.system('pause')
+    elif num == 5:
+        print("프로그램을 종료합니다")
+        break
+    else:
+        print("다시 입력해주세요")
+        continue

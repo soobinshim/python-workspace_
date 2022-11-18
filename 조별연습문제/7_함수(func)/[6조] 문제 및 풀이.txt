@@ -1,0 +1,121 @@
+<<<<< 문제1 >>>>>
+
+# 출처 : 초보자를 위한 파이썬 300제
+
+# 234. 사용자가 원하는 만큼의 숫자를 입력받아 이를 리스트로 만든 후,
+#       그 리스트의 짝수를 추출하여 새로운 리스트로 반환하는 함수를 구현하고
+#       실행한 결과를 출력하라. 함수 구현 시 입력, 출력, 연산 함수는 모두 따로 만들어라.
+#       (함수 이름은 자유)
+
+# 출력 예시
+# pickup_even([3, 4, 5, 6, 7, 8])
+# [4, 6, 8]
+
+
+
+<<<<< 문제2 >>>>>
+
+# 두 자연수 A와 B가 있을 때, A%B는 A를 B로 나눈 나머지 이다. 
+# 예를 들어, 7, 14, 27, 38을 3으로 나눈 나머지는 1, 2, 0, 2이다. 
+# 수 10개를 입력받은 뒤, 이를 42로 나눈 나머지를 구한다.
+# 그 다음 서로 다른 값이 몇 개 있는지 출력하는 프로그램을 작성하시오.
+
+
+
+<<<<< 문제3 >>>>>
+
+2차원 좌표 평면 위에 있는 점 3개 P1, P2, P3가 주어진다.
+#  P1, P2, P3를 순서대로 이은 선분이 어떤 방향을 이루고 있는지 구하는 프로그램을 작성하시오.
+
+# 입력
+첫째 줄에 P1의 (x1, y1), 둘째 줄에 P2의 (x2, y2), 셋째 줄에 P3의 (x3, y3)가 주어진다.
+ (-10,000 ≤ x1, y1, x2, y2, x3, y3 ≤ 10,000) 모든 좌표는 정수이다.
+ P1, P2, P3의 좌표는 서로 다르다.
+
+# 출력
+ P1, P2, P3를 순서대로 이은 선분이 반시계 방향을 나타내면 1, 시계 방향이면 -1, 일직선이면 0을 출력한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<< 풀이1 >>>>>
+
+def my_input(): #list 반환!
+    li = []
+    while True:
+        nums = input("수 입력(끝내고 싶으면 E 입력) : ")
+        if nums != 'E':
+            li.append(nums)
+        else:
+            print("입력 끝!")
+            break
+    return li
+
+def my_print(s):
+    return print("결과는 : {}".format(s))
+
+def pickup_even(my_list):
+    my_list_i = map(int, my_list)
+    my_list_i = list(my_list_i)
+
+    new_list = []
+    for i in my_list_i:
+        if not i % 2: # not i % 2 = True -> i % 2 = False -> i%2 = 0
+            new_list.append(i)
+        
+    return new_list
+
+pre_list = my_input()
+result = pickup_even(pre_list)
+my_print(result)
+
+
+
+<<<<< 풀이2 >>>>>
+
+# arr = []
+# for i in range(10):
+#     n = int(input(":"))
+#     arr.append(n % 42)
+# arr = set(arr)
+# print(len(arr))
+
+
+
+<<<<< 풀이3 >>>>>
+
+def convert_input_to_point(string):
+    point_x, point_y = map(int, string.split())
+    
+    return {"x": point_x, "y": point_y}
+
+def CCW(point1, point2, point3):
+    answer = 0
+    y = (point2['x'] - point1['x']) * (point3['y'] - point1['y'])
+    y3 = (point2['y'] - point1['y']) * (point3['x'] - point1['x'])
+    
+    if y > y3:
+        answer = 1
+    elif y < y3:
+        answer = -1
+        
+    return answer
+        
+
+if __name__ == "__main__":
+    point1 = convert_input_to_point(input(": "))
+    point2 = convert_input_to_point(input(": "))
+    point3 = convert_input_to_point(input(": "))
+    
+    print(CCW(point1, point2, point3))

@@ -1,0 +1,94 @@
+#[문제1. ]
+#출생년도를 입력하면 무슨 띠인지 출력되는 프로그램을 짜시오
+#12간지 : 0 - 원숭이, 1 - 닭, 2 - 개 , 3 - 돼지, 4 - 쥐, 5 - 소, 6 - 호랑이, 7 - 토끼, 8 - 용, 9 - 뱀, 10 - 말, 11 - 양
+
+
+
+#[문제2. ]
+#나이 입력을 받아 입장료를 계산하는 프로그램을 작성 하십시요.
+#단, 10세 이하는 입장료 2000원, 65세 이상은 입장료 0원, 기본 입장료는 4000원입니다.
+
+
+
+#[문제3. ]
+#시험 점수를 입력받아 90~100점은 A  80~90점은 B
+#70~79점은 C 60~69점은 D 나머지 점수는 F를 출력하는 프로그램을 작성하시오. 
+
+
+
+#[문제4. ]
+#월을 입력 받아 그에 해당되는 계절 이름을 출력하는 프로그램을 작성하시오.
+
+
+
+=======================================================
+
+# [문제1 정답 ]
+
+year = int(input("출생년도 입력 : "))
+
+if year % 12 == 0:
+    print("원숭이 띠")
+elif year % 12 == 1:
+    print("닭 띠")
+elif year % 12 == 2:
+    print("개 띠")
+elif year % 12 == 3:
+    print("돼지 띠")
+elif year % 12 == 4:
+    print("쥐 띠")
+elif year % 12 == 5:
+    print("소 띠")
+elif year % 12 == 6:
+    print("호랑이 띠")
+elif year % 12 == 7:
+    print("토끼 띠")
+elif year % 12 == 8:
+    print("용 띠")
+elif year % 12 == 9:
+    print("뱀 띠")
+elif year % 12 == 10:
+    print("말 띠")
+else:
+    print("양 띠")
+
+
+# [문제2 정답 ]
+
+age = int(input('나이를 입력 하십시요 :'))
+if age < 11:
+    price = 2000
+elif age >= 65:
+    price = 0
+else:
+    price = 4000
+print('입장료는',price,'원 입니다.')
+
+
+# [문제3 정답 ]
+score = int(input("시험 점수 입력:"))
+
+if score >= 90:
+    print('A')
+elif score >=80:
+    print('B')
+elif score >=70:
+    print('C')
+elif score >=60:
+    print('D')
+else:
+    print('F')
+
+# [문제4 정답 ]
+
+month = int(input("월을 입력해주시오 :"))
+if month == 3 or month == 4 or month == 5:
+    print(f"{month}월은 봄 입니다.")
+elif month == 6 or month == 7 or month == 8:
+    print(f"{month}월은 여름 입니다.")
+elif month == 9 or month == 10 or month == 11:
+    print(f"{month}월은 가을 입니다.")
+elif month == 12 or month == 1 or month == 2:
+    print(f"{month}월은 겨울 입니다.")
+else:
+    print("잘못 입력하셨습니다.")

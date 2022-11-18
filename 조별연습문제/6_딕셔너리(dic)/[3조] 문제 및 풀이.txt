@@ -1,0 +1,173 @@
+문제1.
+딕셔너리를 사용하여서 이름과 전화번호를 저장하자
+이름을 입력하지 않고 엔터키를 치면 검색모드로 변경
+검색모드에서 저장한 이름으로 전화번호를 검색할 수 있도록 한다.
+검색모드에서도 이름을 입력하지 않고 엔터키를 치면 프로그램 종료
+
+
+
+
+문제2.
+10명의 남녀 비율(명)을 구하시오
+# 주민등록 번호
+li = """
+170522-4185902
+010403-4195574
+860122-1466919
+900127-2351114
+961023-1167050
+150107-4367190
+050403-3806690
+140808-3906302
+980113-1575274
+101103-4152319
+"""
+
+
+
+
+문제3.
+붕어빵가게 메뉴판을 만듭니다
+메뉴는 맛 등록, 맛 수정, 맛 삭제, 전체 맛 보기, 종료로 구성됩니다
+필요한 정보는 맛과 개수, 개수 대비 가격입니다
+이중 딕셔너리를 활용하여 푸세요
+메뉴 수정시에는 맛을 입력한 뒤, 개수와 가격만 수정 가능합니다
+금액은 1,000 과 같이 ','를 붙여줍니다
+
+
+
+
+문제4.
+공부하는 과목과 시작시간을 표시하시오
+math 10:20, english 14:30, koearn 16:00
+
+
+
+
+
+
+
+
+풀이=======================================
+문제1.
+li = {}
+while True:
+    name = input('저장할 이름 입력: ')
+    if not name:
+        print('입력모드 종료')
+        break
+    elif li.get(name) != None:
+        print("저장된 사람입니다. 다시 입력")
+        continue
+    tel = input('저장할 전화번호 입력: ')
+    li[name] = tel
+
+while True:
+    name2 = input('검색할 이름 입력: ')
+    if not name2:
+        print('프로그램 종료')
+        break
+    elif li.get(name2) == None:
+        print("찾고자 하는 사람이 없습니다 다시입력")
+        continue
+
+    print(f'{name2}의 전화번호는 {li[name2]} 입니다.')
+
+
+
+
+문제2.
+a = 0
+m,w = 0,0
+for i in range(li.count("-")):
+    a = li.find("-",a+1)
+    if int(li[a+1])%2 == 0:
+        w += 1
+    else:
+        m += 1
+print(f"남자: {m}명 여자: {w}명")
+
+
+
+
+문제3.
+info = {}
+while True :
+	print('1.맛 등록')
+	print('2.맛 수정')
+	print('3.맛 삭제')
+	print('4.전체 맛 보기')
+	print('5.종료')
+	menu = int(input('>>> '))
+	if menu == 1 :
+		flavour = input('맛 입력 : ')
+		if info.get(flavour) != None :
+			print('존재하는 맛 입니다. 다시 입력')
+		else :
+			num = input('개수 입력 : ')
+			price = int(input('가격 입력 : '))
+			info[flavour] = {'개수' : num, '가격' : price}
+			print('등록 완료')
+	elif menu == 2 :
+		mod_flavour = input('수정하고자 하는 맛 입력 : ')
+		if info.get(mod_flavour) == None :
+			print('수정하고자 하는 맛이 없습니다')
+		else :
+			num = input('개수 입력 : ')
+			price = int(input('가격 입력 : '))
+			info[mod_flavour] = {'개수' : num, '가격' : price}
+			print('수정 완료')
+			print('맛 :', mod_flavour)
+			for k, v in info[mod_flavour].items() :
+				if k == '개수' :
+					print(f'{k} : {v}')
+				else :
+					print(f'{k} : {v:,}')
+	elif menu == 3 :
+		del_flavour = input('삭제하고자 하는 맛 입력 : ')
+		if info.get(del_flavour) == None :
+			print('삭제하고자 하는 맛이 없습니다')
+		else :
+			del info[del_flavour]
+			for i in info.keys() :
+				print('맛 :', i)
+				for k, v in info[i].items() :
+					if k == '개수' :
+						print(f'{k} : {v}')
+					else :
+						print(f'{k} : {v:,}')
+				print('='*15)
+	elif menu == 4 :
+		for i in info.keys() :
+			print('맛 :', i)
+			for k, v in info[i].items() :
+				if k == '개수' :
+					print(f'{k} : {v}')
+				else :
+					print(f'{k} : {v:,}')
+			print('='*15)
+	else :
+		print('프로그램을 종료합니다')
+		break
+
+
+
+
+문제4.
+study = "math 10:20, english 14:30, koearn 16:00"
+reStudy = study.split(',')
+k=0
+for i in reStudy:
+    reStudy[k]=i.lstrip()
+    k+=1
+print('subject'.ljust(10),end="")
+print('time'.ljust(10))
+for i in range(len(reStudy)):
+    a=reStudy[i].split()
+    for k in range(len(a)):
+        if k == 0 :
+            print(a[k].ljust(10),end="")
+        elif k ==1 :
+            print(a[k].ljust(10))
+        elif k == 2 : 
+            print("{:,}".format(int(a[k])).ljust(10)) 
