@@ -10,9 +10,9 @@ except ZeroDivisionError:   # ZeroDivisionError 에러가 발생할 때 아래�
 except ValueError:
     print( "문제 발생" )
 print( "다음 문장" )
+'''
 
-
-
+'''
 while True:
     try:
         num = int(input("수 입력(종료 0): "))
@@ -24,10 +24,10 @@ while True:
         break
     print( "입력한 수: ", num )
 print( "다음 문장들 실행" )
+'''
 
 
-
-
+'''
 try:
     n = int(input("수 입력: "))
     print( "입력한 값: ", n )
@@ -36,10 +36,10 @@ except:
 else:
     print( "else 실행" )
 print( "다음 문장 실행" )
+'''
 
 
-
-
+'''
 try:
     n1 = int(input("수 입력: "))
     n2 = int(input("수 입력: "))
@@ -53,7 +53,7 @@ finally:
 print( "다음 문장 실행" )
 '''
 
-
+'''
 def test():
     file = 0
     try:
@@ -81,7 +81,67 @@ def test():
     print( "test 함수 종료" )
 re = test()
 print( "결과: ", re )
+'''
 
+
+'''
+try:
+    age = int(input("나이 입력: "))
+    #print( "당신의 나이는: ", age-1 )
+
+    if age < 0:
+        raise Exception("0000안됨") # 강제로 예외를 발생시키는 문법
+
+except ValueError:
+    print( "문자는 입력할 수 없음" )
+except Exception as e:
+    print( "0 살 아래는 안 됨" )
+    print( e )
+except:
+    print( "문제 발생" )
+else:
+    print( "당신의 나이는: ", age-1 )
+'''
+
+
+print( "-" * 100 )
+
+'''
+#Q1. 
+print( "#Q1." )
+
+while True:
+    try:
+       age = int(input('입력 : '))
+       st = str(age)
+       if age >= 900101 or len(st) != 6:
+           print( '가입 불가' )
+       elif age <= 891231:
+           print( '가입 가능' )
+           break
+    except:
+        print( '잘못 입력' )
+
+
+
+try:
+    min = input("주민번호 앞 자리 입력(예 900402) : ")
+
+    if len(min) != 6:
+        raise Exception("잘못 입력")
+    if not min.isdigit(): #숫자로 구성되어 있냐
+        raise Exception("잘못 입력 숫자 입력하세요")
+    elif min[0] > '8':
+        raise Exception(min)
+except Exception as e:
+    print( e, "가입불가" )
+else:
+    print( min, ": 가입가능" )
+finally:
+    print("프로그램 종료 합니다")
+'''
+
+    
 
 
 
